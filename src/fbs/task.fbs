@@ -1,0 +1,27 @@
+namespace Medo.Copiyer;
+
+enum CopyModifier:byte { CopyAll = 0, CopyOnly = 1, CopyExcept = 2 }
+
+table Task
+{
+    name: string = "";
+    description: string = "";
+    source_dir: string = "";
+    target_dir: string = "";
+    timer: long = 120000;
+    delete_after_copy: bool = false;
+    copy_modifier: CopyModifier = CopyAll;
+    is_active: bool = true;
+    clean_types: [string] = [];
+    generate_exclude_file: bool = true;
+    color: string = "#454";
+    filters: Filter;
+}
+
+table Filter
+{
+    document_types: [string] = [];
+    document_uids: [string] = [];
+}
+
+root_type Task;
